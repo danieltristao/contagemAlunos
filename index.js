@@ -1,42 +1,37 @@
-let listaParticipantes = [];
-let listaPalestrantes = ["Professor Um", "Professor Dois", "Professor Tres"];
-var limiteParticipantes = 3;
 
+let readlineSync = require('readline-sync'); // usar modulo readline-sync para entrada de dados console
+let nomePeca;
+let listaPecas = [];
+let limiteLista = 10; //diminuir o valor para testar
 
-
-if (listaParticipantes.length < limiteParticipantes) {
-    var readlineSync = require('readline-sync');
-
-    var agora = new Date();
-    var dataEvento = new Date(readlineSync.question('Informe a data do evento "AAAA-MM-DD"  '));
-
-
-    if (dataEvento >= agora) {
-        console.log("Data ok");
-
-        while (listaParticipantes.length < limiteParticipantes) {
-            var idadeParticipante = readlineSync.question('Informe a idade do participante ');
-
-            if (idadeParticipante >= 18) {
-                console.log("idade ok");
-                var inputParticipante = readlineSync.question('Informe o nome do participante  ');
-                listaParticipantes.push(inputParticipante);
-                console.log("Lista de participantes" + " " + listaParticipantes);
-                console.log("Quantidade de participantes" + " " + listaParticipantes.length);
-                console.log("Lista de palestrantes" + " " + listaPalestrantes);
+while ((listaPecas.length < limiteLista) && (nomePeca != "sair")) {
+    let nomePecaIn = readlineSync.question('Informe o nome da peca, ou "sair" para fechar ');
+    nomePeca = nomePecaIn.replace(/\s/g, ''); // retirar espaços da entrada
+    if (nomePeca != "sair") {
+        if (nomePeca.length > 3) {
+            let pesoPeca = readlineSync.question('Informe o peso da peca(em gramas) ');
+            if (pesoPeca > 100) {
+                listaPecas.push(nomePeca);
+                console.log("Lista de pecas = " + listaPecas);
             }
             else {
-                console.log("Menores de 18 anos nao podem ser cadastrados");
+                console.log("Peso invalido");
             }
 
         }
+        else {
+            console.log("Nome invalido");
+        }
     }
     else {
-        console.log("Data invalida");
     }
 
 }
+if (listaPecas.length == limiteLista) {
+    console.log("Limite da lista de pecas atingido");
+}
 else {
-    console.log("Limite de participantes atingido");
-};
+    console.log("Saiu do aplicativo");
+}
+
 
