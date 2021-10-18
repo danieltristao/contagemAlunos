@@ -1,37 +1,20 @@
+let listaAlunos = ["Daniel", "Marina", "Pedro", "Gustavo", "Henrique", "Juliane", "Joao"];
+let numeroAlunos = listaAlunos.length - 1;
+let contador = 0;
 
-let readlineSync = require('readline-sync'); // usar modulo readline-sync para entrada de dados console
-let nomePeca;
-let listaPecas = [];
-let limiteLista = 10; //diminuir o valor para testar
-
-while ((listaPecas.length < limiteLista) && (nomePeca != "sair")) {
-    let nomePecaIn = readlineSync.question('Informe o nome da peca, ou "sair" para fechar ');
-    nomePeca = nomePecaIn.replace(/\s/g, ''); // retirar espaços da entrada
-    if (nomePeca != "sair") {
-        if (nomePeca.length > 3) {
-            let pesoPeca = readlineSync.question('Informe o peso da peca(em gramas) ');
-            if (pesoPeca > 100) {
-                listaPecas.push(nomePeca);
-                console.log("Lista de pecas = " + listaPecas);
-            }
-            else {
-                console.log("Peso invalido");
-            }
-
-        }
-        else {
-            console.log("Nome invalido");
-        }
+for (let i = 0; i <= numeroAlunos; i++) {
+    if (contador == 0) {
+        console.log(contador + ": Zero: " + listaAlunos[contador]);
+        contador++;
     }
     else {
+        if ((contador % 2) == 0) {
+            console.log(contador + ": Par: " + listaAlunos[contador]);
+        }
+        else {
+            console.log(contador + ": Impar: " + listaAlunos[contador]);
+        }
+        contador++;
     }
-
 }
-if (listaPecas.length == limiteLista) {
-    console.log("Limite da lista de pecas atingido");
-}
-else {
-    console.log("Saiu do aplicativo");
-}
-
 
